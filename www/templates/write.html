@@ -1,0 +1,20 @@
+<ion-view view-title="Web convert">
+  <div class="text-center myPadding">
+  <div class="list">
+    <label class="item item-input">
+      <input ng-model="user.value" type="text" placeholder="Insert URL">
+    </label>
+  </div>
+  <button class="button button-positive" ng-click="loginFacebook">
+  Login from Facebook
+  </button>
+  <br><br>
+  <p>Full address</p>
+  <p>http://{{user.value}}</p>
+  <div class="tabs">
+    <div class="tab-item ion-ios-eye-outline" ng-click="webView()">
+      View
+    </div>
+  </div>
+  </div>
+</ion-view>

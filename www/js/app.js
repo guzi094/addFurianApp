@@ -4,9 +4,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+var db = null;
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-modal-select', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaSQLite, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,13 +23,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-modal-select',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
   })
 
   .state('app.furigana', {
@@ -49,8 +49,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-modal-select',
           controller: 'WriteCtrl'
         }
       }
+    })
+  .state('app.setting', {
+      url: '/setting',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/setting.html',
+        }
+      }
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/furigana');
-  $cordovaFacebookProvider;
 });

@@ -1,8 +1,8 @@
-<ion-view view-title="Add furigana" class="myPadding">
+<ion-view view-title="Add furigana & translation" class="myPadding">
   <form name="textForm" novalidate>
     <div class="list list-inset">
       <label class="item item-input">
-        <textarea rows="8" placeholder="Insert japaness" required ng-model="japaness"></textarea>
+        <textarea rows="10" placeholder="Insert japaness or korean" required ng-model="japaness"></textarea>
       </label>
       <br>
     </div>
@@ -10,30 +10,25 @@
       <ruby ng-repeat="item in result">
         <rb>{{item.Surface}}</rb>
         <rt>{{item.Furigana}}</rt>
-        <button ng-click="addWord()" ng-if="item.Furigana !== undefined">+</button>
       </ruby>
       <ruby>
         <rb>{{result.Surface}}</rb>
         <rt>{{result.Furigana}}</rt>
-        <button ng-click="addWord()" ng-if="result.Furigana !== undefined">+</button>
       </ruby>
     </div>
-
-    <div class="row">
-      <button class="button button-block button-positive ion-ios-loop-strong" ng-disabled="textForm.$invalid" ng-click="convert()">
-        Convert Chinese to Furigana
-      </button>
+    <div class="list list-inset">
+      {{transText}}
     </div>
-    <div class="tabs">
-      <a class="tab-item ion-ios-gear" modal-select="" ng-model="grade" options="selectables" modal-title="Select a your grade">
-        Grade Choice
-        <div class="option">
-          {{option}}
-        </div>
-      </a>
-      <a class="tab-item ion-wand" ng-click="clear()">
-        clear
-      </a>
+
+    <div class="tabs-striped tabs-background-positive tabs-color-light">
+      <div class="tabs">
+        <a class="tab-item ion-plus-round" ng-click="convert()" ng-disabled="textForm.$invalid">
+          Add Furigana
+        </a>
+        <a class="tab-item ion-ios-loop-strong" ng-click="translation()" ng-disabled="textForm.$invalid">
+          Translation
+        </a>
+      </div>
     </div>
   </form>
 </ion-view>
